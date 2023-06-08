@@ -382,7 +382,8 @@ if False in list(zip(*mutate_outcome))[1]:
     log.warning("The following mutation runs failed to complete. The corresponding positions in sequence will be skipped.")
 for i in [x for x in mutate_outcome if x[1] == False]:
     log.warning("\t%s" % i[0])
-    unique_residues.remove(i[0])
+    if i[0] in unique_residues:
+        unique_residues.remove(i[0])
 
 log.info("Working directory is: %s" % working_directory)
 
